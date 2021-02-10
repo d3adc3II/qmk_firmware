@@ -44,7 +44,7 @@ enum {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid(
-  KC_1,    KC_1,    KC_2,    KC_3,        KC_4,    KC_5,     KC_6,    KC_7,     KC_8,    KC_9,    KC_0,    KC_BSPC,
+  KC_MUTE,    KC_1,    KC_2,    KC_3,        KC_4,    KC_5,     KC_6,    KC_7,     KC_8,    KC_9,    KC_0,    KC_BSPC,
   KC_TAB,  KC_Q,    KC_W,    KC_E,        KC_R,    KC_T,     KC_Y,    KC_U,     KC_I,    KC_O,    KC_P,    KC_LEAD,
   KC_GRV,  KC_A,    KC_S,    KC_D,        KC_F,    KC_G,     KC_H,    KC_J,     KC_K,    KC_L,    KC_SCLN, KC_ENT,
   KC_LSFT, KC_Z,    KC_X,    KC_C,        KC_V,    KC_B,     KC_N,    KC_M,     KC_COMM, KC_DOT,  KC_UP, TT(_RAISE),
@@ -259,22 +259,22 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   uint8_t muse_offset = 70;
   uint16_t muse_tempo = 50;
 
+ /* The encoder_update_user is a function.
+ * It'll be called by QMK every time you turn the encoder.
+ *
+ * The index parameter tells you which encoder was turned. If you only have
+ * one encoder, the index will always be zero.
+ * 
+ * The clockwise parameter tells you the direction of the encoder. It'll be
+ * true when you turned the encoder clockwise, and false otherwise.
+ */
 void encoder_update_user(uint8_t index, bool clockwise) {
-  /* With an if statement we can check which encoder was turned. */
-  if (index == 0) { /* First encoder */
-    /* And with another if statement we can check the direction. */
+  if (index == 0) {
     if (clockwise) {
-      /* This is where the actual magic happens: this bit of code taps on the
-         Page Down key. You can do anything QMK allows you to do here.
-         You'll want to replace these lines with the things you want your
-         encoders to do. */
       tap_code(KC_VOLU);
     } else {
-      /* And likewise for the other direction, this time Page Down is pressed. */
       tap_code(KC_VOLD);
     }
-  /* You can copy the code and change the index for every encoder you have. Most
-     keyboards will only have two, so this piece of code will suffice. */
   } else if (index == 1) { /* Second encoder */
     if (clockwise) {
       tap_code(KC_UP);
@@ -283,6 +283,8 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     }
   }
 }
+// end of encoder 
+
 
 bool did_leader_succeed;
 #ifdef AUDIO_ENABLE
