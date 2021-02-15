@@ -2,7 +2,7 @@
 //#include "quantum.h"
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 400
-#define TAPPING_TERM 175
+#define TAPPING_TERM 115
 
 
 

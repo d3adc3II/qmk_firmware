@@ -4,7 +4,11 @@
 #define LEADER_TIMEOUT 400
 #define TAPPING_TERM 175
 
+#define RGBLIGHT_LAYERS
+#define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
+#define RGBLIGHT_SLEEP
 
+#define TAP_CODE_DELAY 10
 
 
 
@@ -41,8 +45,4 @@
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
 //#define MIDI_TONE_KEYCODE_OCTAVES 2
 
-#define RGBLIGHT_LAYERS
-#define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
-#define RGBLIGHT_SLEEP
 
-//#define TAP_CODE_DELAY 10
